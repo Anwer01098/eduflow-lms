@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/eduflow}
+    username: ${PGUSER:}
+    password: ${PGPASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-very-long-secret-key-for-jwt-signing-1234567890}
+    access-expiration-ms: 3600000
+    refresh-expiration-ms: 604800000
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:*}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
